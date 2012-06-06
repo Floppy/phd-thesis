@@ -1,0 +1,11 @@
+% Support /listofsymbols, /symbol and /addsymbol tags
+
+\def\listofsymbols {\chapter*{List of Symbols} %
+  %\addcontentsline{toc}{chapter}{\numberline{}{List of Symbols}}%
+  \input symbols.tex %
+  \newpage}
+\def\addsymbol #1: #2#3 {$#1$ \hspace{\stretch{1}} %
+   \parbox{5.2in}{#2 %
+   \leaders\hbox to.78em{\hss .\hss}\hskip 0pt plus 1fill %
+   \pageref{sym:#3}}\\}
+\def\symbol #1{\label{sym:#1}}

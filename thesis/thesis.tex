@@ -1,0 +1,80 @@
+\documentclass[11pt,twoside,openright,fleqn,a4paper]{book}
+\usepackage{eimthesis, symbols, graphicx, color, bibentry,nomencl}
+\usepackage{amsfonts}
+\usepackage{listings}
+\usepackage[chapter,boxed]{algorithm}
+\usepackage[noend]{algorithmic}
+\usepackage[numbers,sort&compress]{natbib}
+\usepackage{captionfont}
+%\usepackage[bookmarks=true]{hyperref}
+\pagestyle{plain}
+\makeglossary
+\newcommand{\theHalgorithm}{\theHchapter.\arabic{algorithm}}
+
+\begin{document}
+\pagenumbering{roman}
+
+\title{Animation of Captured Surface Data}
+\author{Raymond James Smith}
+\centre{Centre for Vision, Speech and Signal Processing}
+
+\renewcommand{\month}{9}
+\renewcommand{\year}{2003}
+
+\summary{
+\renewcommand{\baselinestretch}{1.5}\normalsize
+Creation of 3D graphical content becomes ever harder, as both display capabilities and the demand for complex 3D content increase. In this thesis, we present a method of using densely scanned surface data from physical objects in interactive animation systems. By using a layered approach, incorporating skeletal animation and displacement mapping, we can realistically animate complex datasets with a minimum of manual intervention. 
+
+We propose a method using three layers; firstly, an articulated skeleton layer provides simple motion control of the object. Secondly, a low-polygon control layer, based on the scanned surface, is mapped to this skeleton, and animated using a novel geometric skeletal animation method. Finally, the densely sampled surface mesh is mapped to this control layer using a normal volume mapping, forming the detail layer of the system. This mapping allows animation of the dense mesh data based on deformation of the control layer beneath. The complete layered animation chain allows an animator to perform interactive animation using the control layer, the results of which can then be used to automatically animate a highly detailed surface for final rendering. 
+
+We also propose an extension to this method, in which the detail layer is replaced by a displacement map defined over the control layer. This enables dynamic level of detail rendering, allowing realtime rendering of the dense data, or an approximation thereof. This representation also supports such applications as simple surface editing and compression of surface data. We describe a novel displacement map creation technique based on normal volume mapping, and analyse the performance and accuracy of this method.
+
+\renewcommand{\baselinestretch}{1}\normalsize
+}
+\keywords{layered animation, skeletal animation, normal volume mapping, displacement mapping}
+\email{r.j.smith@acm.org}
+
+\acknowledgements{
+\renewcommand{\baselinestretch}{1.5}\normalsize
+Many thanks to all of those who have supported me through this research. In particular, I'd like to thank my supervisor, Adrian Hilton, for accepting me in the first place, for putting up with my various flights of fancy along the way, and without whom I would perhaps never have discovered the fascinating field of computer graphics. Thanks also to Wei Sun, for collaboration during the early years, and to Gordon Collins for carrying on brilliantly where Wei left off.
+
+I should also thank the various companies who have offered advice and direction along the way. Thanks go to 3D Scanners and Avatar-Me, for listening to my mad ideas on seamless animation, Bulgarian programming support, and one particularly large wooden paperweight. Thanks as well to both Jim Henson's Creature Shop and FrameStore, for letting us see how their model creation processes worked, and suggesting ways we could improve their lot.
+
+There are also many people who have supported me in non-academic ways over this time. Everyone at OmniPerception deserves many thanks for making these last couple of months a lot easier, and making this thesis a much better piece of work than it might have been otherwise. To Warren Moore, I owe thanks for many great ideas (and a few not so great), and I probably owe a whole lot of beers to the Wates House drinking crew, for always keeping me somewhere near reality. You know who you are.
+
+Finally, and most importantly, I'd like to say a huge thankyou to my partner Amanda, for putting up with this (and me) for far too many years, and for proofreading a 150-page document that made no sense. Sorry it took so long!
+
+This project was supported by EPSRC Grant GR/89518 `Functional Models: Building Realistic Models for Virtual Reality and Animation'.
+
+James Smith
+
+September 2003
+\renewcommand{\baselinestretch}{1}\normalsize
+}
+
+\makefront
+\tableofcontents
+\listoffigures
+\listoftables
+\renewcommand{\baselinestretch}{1.5}\normalsize
+\listofsymbols
+\renewcommand{\nomname}{Glossary}
+\printglossary
+
+\cleardoublepage
+\pagestyle{headings}
+\pagenumbering{arabic}
+\nobibliography*
+
+\include{introduction}
+\include{litreview}
+\include{skeletalanim}
+\include{scandata}
+\include{dispmapcreation}
+\include{dispmapanim}
+\include{conclusion}
+
+\bibliographystyle{abbrvnat}
+\bibliography{../bib/papers,../bib/r.smith,../bib/weblinks}
+
+\end{document}

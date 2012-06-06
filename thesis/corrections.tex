@@ -1,0 +1,96 @@
+\documentclass[11pt,a4paper]{book}
+\pagestyle{plain}
+
+\begin{document}
+\pagenumbering{roman}
+
+\chapter*{Thesis Corrections}
+
+\begin{itemize}
+
+\item{\bf Summary.}
+Changed summary to the following:
+
+Creation of 3D graphical content becomes ever harder, as both display capabilities and the demand for complex 3D content increase. In this thesis, we present a method of using densely scanned surface data from physical objects in interactive animation systems. By using a layered approach, incorporating skeletal animation and displacement mapping, we can realistically animate complex datasets with a minimum of manual intervention. 
+
+We propose a method using three layers; firstly, an articulated skeleton layer provides simple motion control of the object. Secondly, a low-polygon control layer, based on the scanned surface, is mapped to this skeleton, and animated using a novel geometric skeletal animation method. Finally, the densely sampled surface mesh is mapped to this control layer using a normal volume mapping, forming the detail layer of the system. This mapping allows animation of the dense mesh data based on deformation of the control layer beneath. The complete layered animation chain allows an animator to perform interactive animation using the control layer, the results of which can then be used to automatically animate a highly detailed surface for final rendering. 
+
+We also propose an extension to this method, in which the detail layer is replaced by a displacement map defined over the control layer. This enables dynamic level of detail rendering, allowing realtime rendering of the dense data, or an approximation thereof. This representation also supports such applications as simple surface editing and compression of surface data. We describe a novel displacement map creation technique based on normal volume mapping, and analyse the performance and accuracy of this method.
+
+\item{\bf Chapter 2, Paragraph 2.}
+Changed ``We are particularly interested highly detailed'' to  ``We are particularly interested in highly detailed''
+
+\item{\bf Figure 2.1.}
+Changed ``Surfaces Representations'' to ``Surface Representations''
+
+\item{\bf Section 2.2.2, Subdivision Surfaces, Paragraph 2.}
+Changed ``Doo-Sabin surfaces, shown in figure 2.2a, is a dual subdivision method, based on the subdivision of quadratic uniform B-Spline surfaces.'' to ``Doo-Sabin subdivision, shown in figure 2.2a, is a dual subdivision method based on quadratic uniform B-Spline surfaces''
+
+\item{\bf Section 2.4.} 
+Changed ``meaning that the polygons do not follow the natural flow of the surface'' to ``in that that the polygon edges do not follow the natural curvature of the surface''
+
+\item{\bf Section 3.1, Paragraph 2.}
+Changed ``Incorrectly places joints'' to ``Incorrectly placed joints''
+
+\item{\bf Figure 3.3.}
+Changed label $1-\alpha$ to $\alpha$
+
+\item{\bf Section 3.4.2.}
+Added footnote ``A seamless surface will be C0 continuous, i.e. will not contain any cracks.''
+
+\item{\bf Section 3.4.3.}
+Changed ``This method creates a seamless deformation of the mesh'' to ``This method deforms the mesh seamlessly (i.e. preserving C0 continuity),``
+
+\item{\bf Section 3.6.1.}
+Added future work section, discussing improvements to the skeletal animation system.
+
+\item{\bf Figure 4.2.}
+Moved ``intersecting normal volume'' figure to a later figure, and replaced it with a diagram showing normal volume continuity.
+
+\item{\bf Section 4.2.3, Final paragraph.}
+Changed ``areal coordinates $\omega$'' to ``areal coordinates $\omega_i$''
+
+\item{\bf Section 4.3.1.}
+Changed ``same geometry of the original object'' to ``same geometry as the original object''
+
+\item{\bf Section 4.3.4, Paragraph 1.}
+Added footnote ``This search could be constrained by taking vertex and triangle adjacency information into account, but this is not included in our current method.''
+
+\item{\bf Section 4.3.4, Paragraph 1.}
+Added ``This simple distance criterion may not always give the correct mapping however, so other information should also be considered, for instance surface orientation. This issue should also be taken into account during control mesh creation, where it could be checked for and avoided during the automatic decimation process.''
+
+\item{\bf Algorithm 5.1.}
+Changed ``for all $v \in {\cal V}$ that contains part of $t$'' to ``for all normal volumes $N \in {\cal N}$ that contain part of $t$'', and changed ``${\cal I} = t \cap v$'' to ``${\cal I} = t \cap N$''
+
+\item{\bf Section 5.4.1, Paragraph 5.}
+Changed ``The errors introduced by this linear approximation are, however, acceptable.'' to ``The errors introduced by this linear approximation are acceptable however, as they are only significant at certain scales, and in the remainder of cases will be insignificant compared to other sources of error.''
+
+\item{\bf Section 5.4.1, Paragraph 6.}
+Added ``For instance, the errors may become visible in a highly detailed rendering, or under strong specular lighting which may cause the surface to appear dimpled.''
+
+\item{\bf Section 5.6.}
+Added paragraph 3: ``Another advantage of our method is that it should be faster to execute. This is because a raycasting approach must search for intersections between the ray and the detail layer by testing each detail layer triangle in turn. Our approach uses existing mapping results, and fills pixel values in the displacement map directly from these, with no searching required. This implies that the triangle filling method has a lower order than the raycasting method, making it more efficient.''
+
+\item{\bf Equation 5.9.}
+Removed ``$\times \vec{p}_{01}$'' from end of equation
+
+\item{\bf Section 6.2.}
+Added Section 6.2.2, Surface Distortion, discussing texture distortion under animation and it's effect on displacement map reconstruction. Also added figure 6.5.
+
+\item{\bf Section 6.5.}
+Renamed ``Mesh Compression'' to ``Displacement Compression''.
+
+\item{\bf Section 6.5.2.}
+Changed ``the amount of mesh compression'' to ``the amount of compression''
+
+\item{\bf Section 6.6, Paragraph 2.}
+Changed ``useful levels of mesh compression'' to ``useful levels of surface compression''.
+
+\item{\bf Chapter 7.}
+Added Section 7.1, Displaced Subdivision Surfaces, comparing our layered animation and Lee's DSS method. Also added figure 7.1.
+
+\item{\bf Chapter 7.}
+Added Section 7.2, Future Work. Added discussion on improved user feedback, and moved section on realtime displacement mapping into a subsection.
+
+\end{itemize}
+\end{document}
