@@ -1,0 +1,151 @@
+% Mods for thesis to standard `book' style by Bill Christmas.
+
+% The following 3 should add up to A4 width less 2" (= 159mm)
+\oddsidemargin  9mm 
+\evensidemargin 6mm 
+\textwidth 144mm    
+
+%These 2 lines do non-indented paragraphs
+\parskip 1.5ex plus 0.5ex minus 0.5ex
+\parindent 0mm
+
+% Restyle page headers
+\headsep 10mm
+\headheight 10mm
+\def \myheader#1#2{\parbox{\textwidth}{#1\hfill#2\\ \rule{\textwidth}{0.4pt}}}
+\def\ps@headings{\let\@mkboth\markboth
+\def\@oddfoot{}\def\@evenfoot{}%       No feet.
+\def\@evenhead{\myheader{\rm\thepage}{\sl\leftmark}}% Left heading
+\def\@oddhead{\myheader{\sl\rightmark}{\rm\thepage}}% Right heading.
+\def\chaptermark##1{\markboth {\ifnum \c@secnumdepth >\m@ne
+   \@chapapp\ \thechapter. \ \fi ##1}{}}%
+\def\sectionmark##1{\markright {\ifnum \c@secnumdepth >\z@
+   \thesection. \ \fi ##1}}}
+
+% This stuff is to get the headers looking right for table of contents, list
+% of figs etc. etc.
+\def\tableofcontents{\@restonecolfalse
+  \if@twocolumn\@restonecoltrue\onecolumn\fi
+  \chapter*{\contentsname
+        \@mkboth{\contentsname}{\contentsname}}%
+  \@starttoc{toc}\if@restonecol\twocolumn\fi}
+
+\def\listoffigures{\@restonecolfalse
+  \if@twocolumn\@restonecoltrue\onecolumn\fi
+  \chapter*{\listfigurename\@mkboth{\listfigurename}%
+    {\listfigurename}}\@starttoc{lof}\if@restonecol
+   \twocolumn\fi}
+ 
+\def\l@figure{\@dottedtocline{1}{1.5em}{2.3em}}
+ 
+\def\listoftables{\@restonecolfalse
+  \if@twocolumn\@restonecoltrue\onecolumn\fi
+  \chapter*{\listtablename\@mkboth{\listtablename}%
+     {\listtablename}}\@starttoc{lot}\if@restonecol
+    \twocolumn\fi}
+ 
+\let\l@table\l@figure
+ 
+\def\thebibliography#1{\chapter*{\bibname\@mkboth
+  {\bibname}{\bibname}}\list
+  {\@biblabel{\arabic{enumiv}}}{\settowidth\labelwidth{\@biblabel{#1}}%
+    \leftmargin\labelwidth
+    \advance\leftmargin\labelsep
+    \usecounter{enumiv}%
+    \let\p@enumiv\@empty
+    \def\theenumiv{\arabic{enumiv}}}%
+    \def\newblock{\hskip .11em plus.33em minus.07em}%
+    \sloppy\clubpenalty4000\widowpenalty4000
+    \sfcode`\.=\@m}
+ 
+\def\endthebibliography{%
+  \def\@noitemerr{\@warning{Empty `thebibliography' environment}}%
+  \endlist}
+
+
+\ps@headings
+
+% The remainder is to set up the front page, summary and acknowledgements
+% (a bit of a hack)
+
+\def\centre#1{\def\thecentre{#1}}
+\long\def\summary#1{\def\thesummary{
+\section*{{\LARGE \bf Summary}}
+
+#1
+
+\vspace{2cm}
+{\bf Key words:} \thekeywords
+\vspace{2cm}
+
+\begin{tabular}{ll}
+Email: & \theemail\\[0.5em]
+WWW:   & http://www.ee.surrey.ac.uk/Personal/R.Smith/
+\end{tabular}
+}}
+
+\def\keywords#1{\def\thekeywords{#1}}
+\def\email#1{\def\theemail{#1}}
+
+\long\def\acknowledgements#1{\def\theacknowledgements{
+
+\section*{{\LARGE \bf Acknowledgements}}
+
+#1
+
+}}
+
+\def\makefront{\begin{titlepage}
+ \let\footnotesize\small
+ \let\footnoterule\relax
+
+ \pagestyle{empty}
+ \pagenumbering{roman}
+ \setcounter{page}{1}
+ \null
+ \vfil
+ \vskip 20\p@
+ \begin{center}
+   {\huge \@title \par}
+   \vskip 1em
+   {\Large \@author \par} 
+   \vskip 3em
+   {\large
+     \begin{tabular}[t]{c} 
+       Submitted for \\
+        MPhil to PhD Transfer Report\\
+       University of Surrey
+     \end{tabular}
+     \par}
+   \vskip 1em
+   \includegraphics[height=2cm]{../images/unis}
+   \vskip 3em
+   {\large
+     \lineskip .75em
+     \begin{tabular}[t]{c} 
+       \thecentre\\
+       School of Electronic Engineering, Information technology and Mathematics \\
+       University of Surrey \\
+       Guildford, Surrey GU2 5XH, U.K.
+     \end{tabular}\par}%
+   \vskip 1.5em
+   {\large   
+     \ifcase \month
+       \or January \or February \or March \or April \or May \or June
+       \or July \or August \or September \or October \or November \or December
+     \fi
+     \space\number\year \par}%
+   \vskip 1.5em
+   \copyright\space \@author\space \number\year
+ \end{center}\par
+ \@thanks
+ \vfil
+ \null
+ \newpage
+ \thesummary
+ \newpage
+ \theacknowledgements
+ \end{titlepage}%
+\setcounter{footnote}{0}%
+\let\thanks\relax
+\gdef\@thanks{}\gdef\@author{}\gdef\@title{}\let\maketitle\relax}
