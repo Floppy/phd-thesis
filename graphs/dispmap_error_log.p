@@ -1,5 +1,5 @@
-set xlabel "Subdivision level" "font=times"
-set ylabel "Log Normalised RMS Error" "font=times"
+set xlabel "Subdivision level"
+set ylabel "Log Normalised RMS Error"
 set xr [0:6]
 set yr [0.01:8]
 set logscale y
