@@ -1,0 +1,23 @@
+# Ignore generated images
+*.eps
+*.png
+
+# Ignore LaTeX auxiliary files
+*.aux
+
+# Ignore build products of thesis.tex
+/thesis/thesis.bbl
+/thesis/thesis.blg
+/thesis/thesis.dvi
+/thesis/thesis.glo
+/thesis/thesis.gls
+/thesis/thesis.ilg
+/thesis/thesis.lof
+/thesis/thesis.log
+/thesis/thesis.lot
+/thesis/thesis.nlo
+/thesis/thesis.pdf
+/thesis/thesis.toc
+
+# Ignore OS X .DS_Store files
+.DS_Store
